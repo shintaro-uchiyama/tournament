@@ -1,5 +1,5 @@
 import TournamentList from "../views/TournamentList/TournamentList";
-// import Entry from "views/Entry/Entry.jsx";
+import Entry from "../views/Entry/Entry";
 
 const tournamentRoutes = [
     {
@@ -7,11 +7,11 @@ const tournamentRoutes = [
         icon: TournamentList,
         component: TournamentList
     },
-    /*  {
+    {
         path: "/entry",
         icon: Entry,
         component: Entry
-      },*/
+    },
     { redirect: true, path: "/", to: "/tournamentList", navbarName: "Redirect" }
 ];
 

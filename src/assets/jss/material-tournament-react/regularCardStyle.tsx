@@ -11,7 +11,7 @@ import {
   redCardHeader,
   blueCardHeader,
   purpleCardHeader
-} from "assets/jss/material-tournament-react.jsx";
+} from "../material-tournament-react";
 
 const regularCardStyle = {
   card,

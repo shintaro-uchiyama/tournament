@@ -27,6 +27,7 @@ class TournamentList extends React.Component<Props, {}> {
                             detail="持ち物や会場の情報など大会の詳細をここに記載予定"
                             onEntry={this.props.onEntry}
                             id={this.props.tournament.tournamentList[0].id}
+                            isEntry={this.props.tournament.tournamentList[0].isEntry}
                         />
                     </ItemGrid>
                     <ItemGrid xs={12} sm={4}>
@@ -39,6 +40,7 @@ class TournamentList extends React.Component<Props, {}> {
                             detail="持ち物や会場の情報など大会の詳細をここに記載予定"
                             onEntry={this.props.onEntry}
                             id={2}
+                            isEntry={this.props.tournament.tournamentList[1].isEntry}
                         />
                     </ItemGrid>
                     <ItemGrid xs={12} sm={4}>
@@ -51,6 +53,7 @@ class TournamentList extends React.Component<Props, {}> {
                             detail="持ち物や会場の情報など大会の詳細をここに記載予定"
                             onEntry={this.props.onEntry}
                             id={3}
+                            isEntry={this.props.tournament.tournamentList[2].isEntry}
                         />
                     </ItemGrid>
                 </Grid>

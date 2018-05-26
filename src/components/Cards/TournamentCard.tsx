@@ -13,11 +13,9 @@ import {
     Typography
 } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-// import * as PropTypes from "prop-types";
 import * as classnames from 'classnames';
 
 import tournamentCardStyle from "../../assets/jss/material-tournament-react/tournamentCardStyle";
-// import { TournamentAction } from '../../actions';
 
 interface TournamentCardProps {
     title: string,
@@ -28,7 +26,8 @@ interface TournamentCardProps {
     detail: string,
     classes: any,
     onEntry: any,
-    id: number
+    id: number,
+    isEntry: boolean,
 }
 
 interface TournamentCardState {
@@ -63,7 +62,7 @@ class TournamentCard extends React.Component<TournamentCardProps & WithStyles<Cl
                     </Typography>
                 </CardContent>
                 <CardActions className={classes.actions}>
-                    <Button variant="raised" color="primary" onClick={this.entryClick}>
+                    <Button variant="raised" color="primary" onClick={this.entryClick} disabled={this.props.isEntry}>
                         参加する
                     </Button>
                     <IconButton

@@ -17,15 +17,18 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import * as classnames from 'classnames';
 
 import tournamentCardStyle from "../../assets/jss/material-tournament-react/tournamentCardStyle";
+// import { TournamentAction } from '../../actions';
 
 interface TournamentCardProps {
     title: string,
     subheader: string,
     image: string,
     description: string,
-    participant: string,
+    participant: number,
     detail: string,
-    classes: any
+    classes: any,
+    onEntry: any,
+    id: number
 }
 
 interface TournamentCardState {
@@ -60,7 +63,7 @@ class TournamentCard extends React.Component<TournamentCardProps & WithStyles<Cl
                     </Typography>
                 </CardContent>
                 <CardActions className={classes.actions}>
-                    <Button variant="raised" color="primary">
+                    <Button variant="raised" color="primary" onClick={this.entryClick}>
                         参加する
                     </Button>
                     <IconButton
@@ -83,24 +86,18 @@ class TournamentCard extends React.Component<TournamentCardProps & WithStyles<Cl
                         </Typography>
                     </CardContent>
                 </Collapse>
-            </Card>
+            </Card >
         );
     }
+
     private handleExpandClick = () => {
         this.setState({ expanded: !this.state.expanded });
     };
 
+    private entryClick = () => {
+        this.props.onEntry(this.props.id);
+    }
+
 }
 
-/*
-TournamentCard.defaultProps = {
-    iconColor: "purple",
-    statIconColor: "gray"
-};
-
-TournamentCard.propTypes = {
-    classes: PropTypes.object.isRequired,
-    title: PropTypes.node,
-};
-*/
 export default withStyles<{} & ClassNames>(tournamentCardStyle)<TournamentCardProps>(TournamentCard);

@@ -1,4 +1,4 @@
-import TournamentList from "../views/TournamentList/TournamentList";
+import TournamentList from "../containers/TournamentList/TournamentList";
 import Entry from "../views/Entry/Entry";
 
 const tournamentRoutes = [

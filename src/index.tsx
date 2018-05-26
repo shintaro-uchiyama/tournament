@@ -1,20 +1,47 @@
 import { createBrowserHistory } from "history";
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { StoreState } from './store/index';
 import { Route, Router, Switch } from "react-router-dom";
 import registerServiceWorker from './registerServiceWorker';
 import indexRoutes from "./routes/index";
+import { tournament } from './reducers/index';
+import { TournamentAction } from './actions/index';
 
 const hist = createBrowserHistory();
 
+const store = createStore<StoreState, TournamentAction, {}, {}>(tournament, {
+  tournamentList: [
+    {
+      id: 1,
+      participantNum: 10,
+      isEntry: true,
+    },
+    {
+      id: 2,
+      participantNum: 20,
+      isEntry: false,
+    },
+    {
+      id: 3,
+      participantNum: 30,
+      isEntry: false,
+    }
+  ]
+});
+
 ReactDOM.render(
-  <Router history={hist}>
-    <Switch>
-      {indexRoutes.map((prop: any, key) => {
-        return <Route path={prop.path} component={prop.component} key={key} />;
-      })}
-    </Switch>
-  </Router>,
+  <Provider store={store}>
+    <Router history={hist}>
+      <Switch>
+        {indexRoutes.map((prop: any, key) => {
+          return <Route path={prop.path} component={prop.component} key={key} />;
+        })}
+      </Switch>
+    </Router>
+  </Provider>,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();

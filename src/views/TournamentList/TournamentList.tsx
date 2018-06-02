@@ -3,9 +3,7 @@ import { Grid } from '@material-ui/core';
 import ItemGrid from "../../components/Grid/ItemGrid";
 import TournamentCard from "../../components/Cards/TournamentCard";
 import { StoreState } from '../../store/index';
-import azabu from "assets/img/cards/azabu.jpg";
-import oizumi from "assets/img/cards/oizumi.jpg";
-import yokohama from "assets/img/cards/yokohama.jpg";
+import * as constants from "../../constants/index";
 
 interface Props {
     tournament: StoreState
@@ -13,49 +11,37 @@ interface Props {
 }
 
 class TournamentList extends React.Component<Props, {}> {
+    public images = this.importAll(require.context('../../assets/img/cards', false, /\.(png|jpe?g|svg)$/));
+
+    public importAll(r: any) {
+        const images = {};
+        r.keys().map((item: any, index: any) => { images[item.replace('./', '')] = r(item); });
+        return images;
+    }
+
     public render() {
         return (
             <div>
                 <Grid container={true} spacing={16}>
-                    <ItemGrid xs={12} sm={4}>
-                        <TournamentCard
-                            title="Oizumi"
-                            subheader="Augast 18, 2018"
-                            image={oizumi}
-                            description="大泉学園で開催される「うまくなくても参加できるテニス大会」"
-                            participant={this.props.tournament.tournamentList[0].participantNum}
-                            detail="持ち物や会場の情報など大会の詳細をここに記載予定"
-                            onEntry={this.props.onEntry}
-                            id={this.props.tournament.tournamentList[0].id}
-                            isEntry={this.props.tournament.tournamentList[0].isEntry}
-                        />
-                    </ItemGrid>
-                    <ItemGrid xs={12} sm={4}>
-                        <TournamentCard
-                            title="Yokohama Cup"
-                            subheader="Augast 18, 2018"
-                            image={yokohama}
-                            description="大泉学園で開催される「うまくなくても参加できるテニス大会」"
-                            participant={this.props.tournament.tournamentList[1].participantNum}
-                            detail="持ち物や会場の情報など大会の詳細をここに記載予定"
-                            onEntry={this.props.onEntry}
-                            id={2}
-                            isEntry={this.props.tournament.tournamentList[1].isEntry}
-                        />
-                    </ItemGrid>
-                    <ItemGrid xs={12} sm={4}>
-                        <TournamentCard
-                            title="Azabu Cup"
-                            subheader="Augast 18, 2018"
-                            image={azabu}
-                            description="大泉学園で開催される「うまくなくても参加できるテニス大会」"
-                            participant={this.props.tournament.tournamentList[2].participantNum}
-                            detail="持ち物や会場の情報など大会の詳細をここに記載予定"
-                            onEntry={this.props.onEntry}
-                            id={3}
-                            isEntry={this.props.tournament.tournamentList[2].isEntry}
-                        />
-                    </ItemGrid>
+                    {constants.TOURNAMENT_LIST.map(
+                        (data, index) => {
+                            return (
+                                <ItemGrid xs={12} sm={4} key={index}>
+                                    <TournamentCard
+                                        title={data.title}
+                                        subheader={data.subheader}
+                                        image={this.images[data.image]}
+                                        description={data.description}
+                                        participant={this.props.tournament.tournamentList[data.id].participantNum}
+                                        detail={data.detail}
+                                        onEntry={this.props.onEntry}
+                                        id={this.props.tournament.tournamentList[data.id].id}
+                                        isEntry={this.props.tournament.tournamentList[data.id].isEntry}
+                                    />
+                                </ItemGrid>
+                            )
+                        }
+                    )}
                 </Grid>
             </div>
         );

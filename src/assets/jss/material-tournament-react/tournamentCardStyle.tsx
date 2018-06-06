@@ -23,6 +23,10 @@ const tournamentCardStyle = (theme: any) => ({
             duration: theme.transitions.duration.shortest,
         }),
         marginLeft: 'auto',
+    },
+    link: {
+        textDecoration: 'none',
+        color: '#fff'
     }
 });
 

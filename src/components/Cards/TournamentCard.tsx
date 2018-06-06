@@ -14,8 +14,8 @@ import {
 } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import * as classnames from 'classnames';
-
 import tournamentCardStyle from "../../assets/jss/material-tournament-react/tournamentCardStyle";
+import { Link } from 'react-router-dom'
 
 interface TournamentCardProps {
     title: string,
@@ -45,6 +45,7 @@ class TournamentCard extends React.Component<TournamentCardProps & WithStyles<Cl
 
     public render() {
         const classes = this.props.classes;
+        const linkTo = "/entry/" + this.props.id;
         return (
             <Card className={classes.card}>
                 <CardHeader title={this.props.title} subheader={this.props.subheader} />
@@ -62,8 +63,10 @@ class TournamentCard extends React.Component<TournamentCardProps & WithStyles<Cl
                     </Typography>
                 </CardContent>
                 <CardActions className={classes.actions}>
-                    <Button variant="raised" color="primary" onClick={this.entryClick} disabled={this.props.isEntry}>
-                        参加する
+                    <Button variant="raised" color="primary" disabled={this.props.isEntry}>
+                        <Link to={linkTo} className={classes.link}>
+                            参加する
+                        </Link>
                     </Button>
                     <IconButton
                         className={classnames(classes.expand, {
@@ -92,11 +95,6 @@ class TournamentCard extends React.Component<TournamentCardProps & WithStyles<Cl
     private handleExpandClick = () => {
         this.setState({ expanded: !this.state.expanded });
     };
-
-    private entryClick = () => {
-        this.props.onEntry(this.props.id);
-    }
-
 }
 
 export default withStyles<{} & ClassNames>(tournamentCardStyle)<TournamentCardProps>(TournamentCard);

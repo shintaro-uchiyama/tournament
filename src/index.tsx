@@ -17,7 +17,7 @@ const store = createStore<StoreState, TournamentAction, {}, {}>(tournament, {
     {
       id: 1,
       participantNum: 10,
-      isEntry: true,
+      isEntry: false,
     },
     {
       id: 2,

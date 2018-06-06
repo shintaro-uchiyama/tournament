@@ -20,7 +20,7 @@ const Header =
                             Tennis tournament
                         </Typography>
                         <Button color="inherit" size="small"><Link to="/tournamentList" className={classes.link}>List</Link></Button>
-                        <Button color="inherit" size="small"><Link to="/entry" className={classes.link}>Entry</Link></Button>
+                        <Button color="inherit" size="small"><Link to="/entry/1" className={classes.link}>Entry</Link></Button>
                     </Toolbar>
                 </AppBar>
             </div>

@@ -1,5 +1,5 @@
 import TournamentList from "../containers/TournamentList/TournamentList";
-import Entry from "../views/Entry/Entry";
+import Entry from "../containers/Entry/Entry";
 
 const tournamentRoutes = [
     {
@@ -8,7 +8,7 @@ const tournamentRoutes = [
         component: TournamentList
     },
     {
-        path: "/entry",
+        path: "/entry/:id",
         icon: Entry,
         component: Entry
     },

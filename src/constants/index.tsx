@@ -1,5 +1,6 @@
 export const ENTRY_TOURNAMENT = 'ENTRY_TOURNAMENT';
 export type ENTRY_TOURNAMENT = typeof ENTRY_TOURNAMENT;
+import gql from "graphql-tag";
 
 // FIXME: API実装前に一覧
 export const TOURNAMENT_LIST = [
@@ -31,3 +32,15 @@ export const TOURNAMENT_LIST = [
         detail: "持ち物や会場の情報など大会の詳細をここに記載予定",
     },
 ];
+
+export const TOURNAMENTS_QUERY = gql`
+  {
+    tournaments {
+      id
+      subtitle
+      date
+      image
+      description
+    }
+  }
+`;

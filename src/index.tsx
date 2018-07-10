@@ -9,6 +9,12 @@ import registerServiceWorker from './registerServiceWorker';
 import indexRoutes from "./routes/index";
 import { tournament } from './reducers/index';
 import { TournamentAction } from './actions/index';
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+
+const client = new ApolloClient({
+  uri: "http://tournament.local/graphql"
+});
 
 const hist = createBrowserHistory();
 
@@ -33,15 +39,17 @@ const store = createStore<StoreState, TournamentAction, {}, {}>(tournament, {
 });
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router history={hist}>
-      <Switch>
-        {indexRoutes.map((prop: any, key) => {
-          return <Route path={prop.path} component={prop.component} key={key} />;
-        })}
-      </Switch>
-    </Router>
-  </Provider>,
+  <ApolloProvider client={client}>
+    <Provider store={store}>
+      <Router history={hist}>
+        <Switch>
+          {indexRoutes.map((prop: any, key) => {
+            return <Route path={prop.path} component={prop.component} key={key} />;
+          })}
+        </Switch>
+      </Router>
+    </Provider>
+  </ApolloProvider>,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();

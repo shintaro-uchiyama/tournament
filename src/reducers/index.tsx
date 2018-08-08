@@ -8,7 +8,6 @@ export function tournament(state: StoreState, action: any): StoreState {
                 tournamentList: state.tournamentList.map(((eachTournament, index) => {
                     if (eachTournament.id === action.index) {
                         return Object.assign({}, eachTournament, {
-                            participantNum: ++eachTournament.participantNum,
                             isEntry: !eachTournament.isEntry
                         });
                     }

@@ -1,8 +1,7 @@
-import { TournamentAction } from '../actions';
 import { StoreState } from '../store/index';
-import { ENTRY_TOURNAMENT } from '../constants/index';
+import { ENTRY_TOURNAMENT, HANDLE_INPUT_CHANGE } from '../constants/index';
 
-export function tournament(state: StoreState, action: TournamentAction): StoreState {
+export function tournament(state: StoreState, action: any): StoreState {
     switch (action.type) {
         case ENTRY_TOURNAMENT:
             return Object.assign({}, state, {
@@ -16,6 +15,22 @@ export function tournament(state: StoreState, action: TournamentAction): StoreSt
                     return eachTournament;
                 }))
             })
+        case HANDLE_INPUT_CHANGE:
+            state = Object.assign({}, state);
+            switch (action.name) {
+                case "teamName":
+                    state.entry.teamName = action.value;
+                    return state;
+                case "leaderName":
+                    state.entry.leaderName = action.value;
+                    return state;
+                case "email":
+                    state.entry.email = action.value;
+                    return state;
+                case "phoneNo":
+                    state.entry.phoneNo = action.value;
+                    return state;
+            }
     }
     return state;
 }

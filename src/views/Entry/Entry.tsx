@@ -12,7 +12,8 @@ interface EntryProps {
     tournament: StoreState,
     onEntry: any,
     classes: any,
-    match: any
+    match: any,
+    handleInputChange: any
 }
 
 type ClassNames = keyof typeof entryStyle;
@@ -48,6 +49,7 @@ class Entry extends React.Component<EntryProps & WithStyles<ClassNames>, {}> {
                                                 success={false}
                                                 inputProps=""
                                                 labelProps=""
+                                                handleInputChange={this.props.handleInputChange}
                                             />
                                         </ItemGrid>
                                         <ItemGrid xs={12} sm={4}>
@@ -61,6 +63,7 @@ class Entry extends React.Component<EntryProps & WithStyles<ClassNames>, {}> {
                                                 success={false}
                                                 inputProps=""
                                                 labelProps=""
+                                                handleInputChange={this.props.handleInputChange}
                                             />
                                         </ItemGrid>
                                         <ItemGrid xs={12} sm={4}>
@@ -74,6 +77,7 @@ class Entry extends React.Component<EntryProps & WithStyles<ClassNames>, {}> {
                                                 success={false}
                                                 inputProps=""
                                                 labelProps=""
+                                                handleInputChange={this.props.handleInputChange}
                                             />
                                         </ItemGrid>
                                         <ItemGrid xs={12} sm={4}>
@@ -87,6 +91,7 @@ class Entry extends React.Component<EntryProps & WithStyles<ClassNames>, {}> {
                                                 success={false}
                                                 inputProps=""
                                                 labelProps=""
+                                                handleInputChange={this.props.handleInputChange}
                                             />
                                         </ItemGrid>
                                     </Grid>

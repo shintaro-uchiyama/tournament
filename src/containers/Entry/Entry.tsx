@@ -5,13 +5,14 @@ import { connect, Dispatch } from 'react-redux';
 
 export function mapStateToProps(tournament: StoreState) {
   return {
-    tournament
+    tournament,
   };
 }
 
-export function mapDispatchToProps(dispatch: Dispatch<actions.TournamentAction>) {
+export function mapDispatchToProps(dispatch: Dispatch) {
   return {
     onEntry: (index: number) => dispatch(actions.entryTournament(index)),
+    handleInputChange: (name: string, value: string) => dispatch(actions.handleInputChange(name, value)),
   };
 }
 

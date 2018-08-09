@@ -35,6 +35,9 @@ class Regist extends React.Component<RegistProps, {}>{
           <div>
             <div onLoad={this.validateToken.bind(this, regist)}>
               登録完了ページ！！
+              <p>
+                <button onClick={this.validateToken.bind(this, regist)}>登録ボタンを押してください</button>
+              </p>
             </div>
             {data && <p>登録API通信完了（時間見つけて重複登録とかレスポンスに応じた出し分けしたい）</p>}
             {loading && <p>Loading...</p>}
@@ -46,7 +49,6 @@ class Regist extends React.Component<RegistProps, {}>{
   }
 
   private validateToken = (regist: any) => {
-    alert('rr');
     const searchParams = new URLSearchParams(this.props.location.search);
     regist({
       variables: {

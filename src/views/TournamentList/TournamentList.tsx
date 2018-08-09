@@ -40,6 +40,7 @@ const TOURNAMENT_QUERY = gql`
       date
       image
       description
+      participantNum
     }
   }
 `;
@@ -71,7 +72,7 @@ class TournamentList extends React.Component<ChildProps<Props, Response>, {}> {
                                         subheader={data.subtitle}
                                         image={this.images[data.image]}
                                         description={data.description}
-                                        participant={this.props.tournament.tournamentList[data.id - 1].participantNum}
+                                        participant={data.participantNum}
                                         detail={data.description}
                                         onEntry={this.props.onEntry}
                                         id={this.props.tournament.tournamentList[data.id - 1].id}

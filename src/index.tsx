@@ -12,10 +12,10 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
+import {env} from './constants/index';
 
 const client = new ApolloClient({
-  uri: "http://tournament.local/graphql"
+  uri: env.graphqlUrl
 });
 
 const hist = createBrowserHistory();

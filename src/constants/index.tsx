@@ -18,3 +18,27 @@ export const TOURNAMENTS_QUERY = gql`
     }
   }
 `;
+
+const Env = () => {
+  if (process.env.NODE_ENV === 'development') {
+    return {
+      env: {
+        graphqlUrl: "http://tournament.local/graphql",
+      }
+    }
+  } else if (process.env.NODE_ENV === 'production') {
+    return {
+      env: {
+        graphqlUrl: "https://api.ucwork.xyz/graphql",
+      }
+    }
+  } else {
+    return {
+      env: {
+        graphqlUrl: "http://tournament.local/graphql",
+      }
+    }
+  }
+}
+
+export const env = Env().env
